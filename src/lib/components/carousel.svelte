@@ -1,20 +1,19 @@
 <script>
     import { slide } from "svelte/transition";
 
-    // export let pages = [];
-
+    /**
+     * @type {[]}
+     */
+    export let pages = [];
     let currentTab = 0;
 </script>
 
 <section class="carousel" in:slide>
 
-    <slot></slot>
-
 
 
     <section class="footer">
-
-        <!-- <section class="dots">
+        <section class="dots">
             {#each {length: pages} as _, page}
     
                 <button on:click={() => currentTab = page}>{page}
@@ -28,8 +27,7 @@
                 </button>
                 
             {/each}
-        </section> -->
-
+        </section>
 
         <section class="controls">
             <button class="previous" on:click={() => currentTab--}>Previous</button>
@@ -49,18 +47,20 @@
     .dots {
         display: flex;
         justify-content: center;
-        padding: 3px;
+        gap: 5px;
+        margin: 5px;
     }
 
     .dot {
-        height: 1px;
-        width: 1px;
-        border-radius: 2px;
-        background-color: black;
+        height: 10px;
+        width: 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
     }
 
     .selected {
-        background-color: aqua;
+        background-color: var(--primary);
     }
 
     button {
@@ -80,4 +80,15 @@
         border-bottom-right-radius: 1rem;
     }
 
+    .footer {
+        position: relative;
+        bottom: 0%;
+    }
+
+    /* don't display the controls on print */
+    @media print {
+        .footer {
+            display: none;
+        }
+    }
 </style>
