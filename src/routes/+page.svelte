@@ -65,24 +65,7 @@
     </Section>
 </section>
 
-
-
-
-
-<!-- only print -->
-
-<section class="onlyPrint viewOnline">
-   <p>View online <a href="blank">https://cw1.ccc.sambot.dev</a></p>
-</section>
-
 <style>
-
-    .viewOnline {
-        background-color: yellow;
-        text-align: center;
-        padding: 1rem;
-    }
-
     p {
         max-width: 50rem;
         margin-bottom: 30px;
@@ -118,8 +101,6 @@
         grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         overflow: auto;
         justify-content: center;
-        /* flex-wrap: wrap;
-        flex-basis: 25%; */
         max-height: 100vh;
     }
 
