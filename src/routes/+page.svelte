@@ -7,7 +7,7 @@
 </script>
 
 <h1 class="title">
-    Demo
+    Algorithm for Optimising Routes Based on Ethical Principles for Self-Driving Cars
 </h1>
 
 <section class="content">
@@ -20,10 +20,23 @@
         </h3>
     
         <p>
-            For this model, I chose to use Utilitarianism. I primarily chose this model due to it prioritising the greatest good for the greatest amount of people. 
+            For this model, I chose to use Utilitarianism. I primarily chose this framework due to it prioritising the greatest good
+            for the greatest amount of people. This means that the model will heavily prioritise saftey of the people in the towns
+            over the saftey of the driver. As a result of this, the model is more likely to chose a route that is longer but safer
+            over a route that is shorter and more dangerous.
         </p>
+
+        <p>
+
+            Furthermore, as this framework is a form of consequentialism, it is the only model that is able to partially predict the
+            outcome of a route. This is because the model is able to weight the outcome of a route based on the danger it will incur.
+            When compared to the other proposed ethical frameworks, utilitarianism is the only framework that is able to be applied
+            algorithmically, making it the only suibtable framework for this project.
+
+        </p>
+
+        <!-- notes: have ready the limitations of utilitarianism and rebuttals -->
     
-        <!-- <Carousel /> -->
     </Section>
     
     <!-- Preparing the graphs -->
@@ -33,6 +46,7 @@
     </Section>
 
     <!-- choosing a pathfinding algorithm -->
+    <!-- Why this algorithm helps solve this problem -->
     <!-- NOTE: Instead of this possibly have web design process -->
     <Section title="Chosing a pathfinding algorithm">
 
@@ -40,14 +54,14 @@
 
     <!-- The algorithm's process -->
     <Section title="Algorithmic process">
-
+        
     </Section>
     
     <!-- testing the algorithm on towns -->
     <Section title="Testing the algorithm">
-        <Carousel>
-            
-        </Carousel>
+        <!-- <Carousel>
+
+        </Carousel> -->
     </Section>
 </section>
 
@@ -57,16 +71,22 @@
 
 <!-- only print -->
 
-<section class="onlyPrint">
-    <h1>
-        This site looks better online
-    </h1>
-    <a href="blank">
-        https://cw1.ccc.sambot.dev
-    </a>
+<section class="onlyPrint viewOnline">
+   <p>View online <a href="blank">https://cw1.ccc.sambot.dev</a></p>
 </section>
 
 <style>
+
+    .viewOnline {
+        background-color: yellow;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    p {
+        max-width: 50rem;
+        margin-bottom: 30px;
+    }
 
     @media (prefers-color-scheme: light) {
         :global(:root) {
@@ -88,27 +108,25 @@
         }
     }
 
-    :global(:root) {
-        --warning: rgba(255, 255, 0, 0.825), 255, 0;
-    }
-
     .title {
         text-align: center;
         font-size: xx-large;
     }
 
     .content {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         overflow: auto;
         justify-content: center;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap;
+        flex-basis: 25%; */
+        max-height: 100vh;
     }
 
     @media screen
     {
         .onlyPrint {
             display: none;
-            background-color: var(--warning);
         }
     }
 </style>
