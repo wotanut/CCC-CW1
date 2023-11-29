@@ -6,7 +6,6 @@
 	import Algorithm from "$lib/content/algorithm.svelte";
 	import Preparing from "$lib/content/preparing.svelte";
 	import Testing from "$lib/content/testing.svelte";
-	import WebDesign from "$lib/content/webDesign.svelte";
 </script>
 
 <h1 class="title">
