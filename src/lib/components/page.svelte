@@ -1,22 +1,12 @@
-<script>
-    import { slide } from "svelte/transition";
+<!-- stores a list of sections -->
 
+<script>
     /** 
-     * @type {string}
-    */ 
-    export let title;
-    export let id = 0;
+     * @type {any}
+     */
+     export let content;
+
+     console.log("Content" + content)
 </script>
 
-<section class="section" transition:slide>
-
-    <h1 class="title">{title}</h1>
-
-    <!-- slot for section content -->
-    <slot></slot>
-
-</section>
-
-<style>
-
-</style>
+<!-- possibly a slot here and then pass this as a prop to the paginator-->

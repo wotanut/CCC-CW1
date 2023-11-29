@@ -15,7 +15,6 @@
     <!-- slot for section content -->
     <slot></slot>
 
-
 </section>
 
 <style>

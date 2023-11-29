@@ -1,28 +1,79 @@
-<script>
+<script lang="ts">
     import { slide } from "svelte/transition";
+    // import { Type } from "typescript";
+    import Page from "./page.svelte";
+	import Section from "./section.svelte";
+	import Content from "./content.svelte";
+	// import Page from "./page.svelte";
 
-    /**
-     * @type {[]}
-     */
-    export let pages = [];
-    let currentTab = 0;
+    export let currentTab = 0;
+    export let printPage = 0;
+
+    $: tab = currentTab
+
+    // carousel then only needs a list of pages
+
+    // take the list of pages as a prop
+    export let pages :any[] = [];
+
+    pages.forEach(page => {
+        console.log(page)
+        // console.log(page.componentData)
+        console.log("------------------")
+    });
+
+    function updateTab(decrease=false) {
+        if (decrease) {
+            if (currentTab > 0) {
+                currentTab--;
+            }
+        } else {
+            if (currentTab < pages.length - 1) {
+                currentTab++;
+            }
+        }
+    }
+
+
 </script>
 
-<section class="carousel" in:slide>
+<section class="carousel">
 
+    {#each pages as page, index}
+        {#if index === currentTab}
+
+            <h1>Current Tab {index}</h1>
+
+            <svelte:component this={page.component} {...page.componentData} />
+
+            <!-- <svelte:component this={page.component} {...page.componentData} /> -->
+            <!-- {console.log("Changing page" + page.component)} -->
+
+            <!-- {#each pages as { component, componentData } (componentData.id)}
+                <svelte:component this={component} {...componentData} />
+            {/each} -->
+            <!-- <Page {...page.componentData} /> -->
+
+            <!-- <svelte:component this={page.component} {...page.props}></svelte:component> -->
+
+            <!-- {#each page.componentData.sections as section} -->
+                <!-- <p>Rendering section with ID {page.componentData.id}</p> -->
+                <!-- <svelte:component this={section.component}/> -->
+                <!-- <p>e</p> -->
+            <!-- {/each} -->
+            
+            
+        {/if}
+    {/each}
 
 
     <section class="footer">
         <section class="dots">
-            {#each {length: pages} as _, page}
+            {#each pages as page, index}
     
-                <button on:click={() => currentTab = page}>{page}
+                <button on:click={() => tab = index}>
     
-                    {#if page === currentTab}
-                        <span class="selected dot"></span>
-                    {:else}
-                        <span class="dot"></span>
-                    {/if}
+                    <div class="dot {tab === index ? 'selected' : ''}"></div>
     
                 </button>
                 
@@ -30,8 +81,8 @@
         </section>
 
         <section class="controls">
-            <button class="previous" on:click={() => currentTab--}>Previous</button>
-            <button class="next" on:click={() => currentTab++}>Next</button>
+            <button class="previous {tab == 0 ? 'disabled' : ''}" disabled={tab == 0} on:click={() => updateTab(true)}>Previous</button>
+            <button class="next {tab == pages.length -1 ? 'disabled' : ''}" disabled={tab == pages.length -1} on:click={() => updateTab()}>Next</button>
         </section>
 
     </section>
@@ -42,6 +93,14 @@
     .controls {
         display: flex;
         justify-content: center;
+    }
+
+    .disabled {
+        opacity: 0.5;
+    }
+
+    .disabled:hover {
+        cursor: not-allowed;
     }
 
     .dots {
