@@ -10,6 +10,8 @@
 
 # Live Preview
 
+<img src="poster.png" alt="Preview">
+
 You can view a live preview of the project [here](https://cw1.ccc.sambot.dev/)
 
 # The name
